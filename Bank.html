@@ -1,0 +1,13 @@
+<meta charset="x-UTF-16LE-BOM">
+<script>
+    var sum = parseInt(prompt('Введите сумму вклада'));
+    var percent = parseInt(prompt('Введите годовую процентрую ставку'));
+    var period = parseInt(prompt('На сколько лет хотите сделать вклад?'));
+    var sumPer = sum;
+
+    for (var i = 1; i <= period; i++)
+    {
+	    sumPer = sumPer*(1+percent/100);
+	    alert('Сумма вклада за ' + i  + ' год равна ' + parseInt(sumPer));
+    }
+</script>
