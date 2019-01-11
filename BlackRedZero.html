@@ -1,0 +1,30 @@
+<meta charset="x-UTF-16LE-BOM">
+<script>
+    var countRed = 0;
+    var count = [];
+    var number = 0;
+    var n = parseInt(prompt('Введите количество элементов'));
+    var arr = [];
+
+    for (var i=0; i<n; i++)
+    {
+    	arr.push(Math.round(Math.random()*2-1));
+    	if (arr[i] == 1)
+        {
+            countRed++;
+        }
+    	else
+        {
+        	count[number] = countRed;
+        	number++;
+        	countRed = 0;
+        }
+    }
+    var maxRed = count[0];
+    for (var i=1; i<count.length; i++)
+    {
+        maxRed = Math.max(maxRed, count[i]);
+    }
+    alert(arr);
+    alert('Максимальное количество подряд идущих красных фишек равно ' + maxRed);
+</script>
