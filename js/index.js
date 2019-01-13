@@ -1,20 +1,5 @@
-var diler = [getCard()];
+var diller = [getCard()];
 var player1 = [getCard(), getCard()];
-
-function getCard()
-{
-	var cards = [
-		'6',
-		'7',
-		'8',
-		'9',
-		'10',
-		'J',
-		'Q',
-		'K',
-		'A'];
-	return cards[getRandomInt(0, cards.length - 1)];
-}
 
 alert(getStatus());
 
@@ -43,13 +28,28 @@ else
 	}
 }
 
+function getCard()
+{
+	var cards = [
+		'6',
+		'7',
+		'8',
+		'9',
+		'10',
+		'J',
+		'Q',
+		'K',
+		'A'];
+	return cards[getRandomInt(0, cards.length - 1)];
+}
+
 function getRandomInt(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function getStatus()
 {
-	return ('Дилер: ' + diler.join(' ') + '. ' + 'Игрок 1: ' + player1.join(' ') + '.');
+	return ('Дилер: ' + diller.join(' ') + '. ' + 'Игрок 1: ' + player1.join(' ') + '.');
 }
 function getSumOfCards(arr)
 {
