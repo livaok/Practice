@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+	var sum = prompt('Введите сумму вклада').trim();
+	while (isNaN(sum) || !sum)
+	{
+		sum = prompt('Введенные данные неверны. Введите сумму вклада').trim();
+	}
+	var percent = prompt('Введите годовую процентрую ставку (в %)').trim();
+	while (isNaN(percent) || !percent)
+	{
+		percent = prompt('Введенные данные неверны. Введите годовую процентную ставку (в %)').trim();
+	}
+	var period = prompt('На сколько лет хотите сделать вклад (от 1 год до 50 лет)? ').trim();
+	while (isNaN(period) || !period || parseInt(period) > 50)
+	{
+		period = prompt('Введенные данные неверны. На сколько лет хотите сделать вклад (от 1 года до 50 лет)?').trim();
+	}
+	var sumPer = parseInt(sum);
+	for (var i = 1; i <= parseInt(period); i++)
+	{
+		sumPer = sumPer * (1 + parseInt(percent) / 100);
+		alert('Сумма вклада за ' + i + ' год равна ' + Math.floor(sumPer));
+	}
+</script>
+</body>
+</html>
