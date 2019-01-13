@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<script>
+	var a1 = 10;
+	var a2 = 30;
+	var b1 = 50;
+	var b2 = 70;
+	var x = prompt('Введите угол бросания птички').trim();
+	while ((isNaN(x)) || !x)
+	{
+		x = prompt('Введено не число. Введите угол бросания птички').trim();
+	}
+	if ((x > a1) && (x < a2) || (x > b1) && (x < b2))
+	{
+		alert('Попадание!');
+	}
+	else
+	{
+		alert('Промах...');
+	}
+</script>
+</body>
+</html>
