@@ -14,15 +14,15 @@ function getCard()
 		'8',
 		'9',
 		'10',
-		'V',
+		'J',
 		'Q',
 		'K',
-		'T'];
-	return cards[getRandomInt(0, cards.length - 1)];
+		'A'];
+	return cards[getRandomInt(0, cards.length - 1)]; x
 }
 
 var diler = [getCard()];
-var player1 = [getCard(), getCard()];
+var player1 = [getCard(), getCard(), getCard()];
 
 alert('Дилер: ' + diler.join(' ') + ' Игрок 1: ' + player1.join(' '));
 
@@ -31,24 +31,29 @@ function getSumOfCards(arr)
 	var count = 0;
 	for (var i = 0; i < arr.length; i++)
 	{
-		if (isNaN(arr[i]))
+		if (arr[i] != 'A')
 		{
-			if (arr[i] == 'V' || arr[i] == 'Q' || arr[i] == 'K')
+			if (arr[i] == 'J' || arr[i] == 'Q' || arr[i] == 'K')
 			{
 				count = count + 10;
 			}
 			else
 			{
-				count = count + 11;
+				count = count + parseInt(arr[i]);
 			}
 		}
-		else if (6 <= arr[i] <= 10)
+	}
+	for (var i = 0; i < arr.length; i++)
+	{
+		if (arr[i] == 'A')
 		{
-			count = count + parseInt(arr[i]);
+			if (count > 10)
+				count = count + 1;
+			else
+				count = count + 11;
 		}
 	}
 	return count;
 }
-alert(getSumOfCards(diler));
-alert(getSumOfCards(player1));
+alert('Сумма карт равна ' + getSumOfCards(player1));
 
