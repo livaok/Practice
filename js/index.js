@@ -1,45 +1,46 @@
-var diller = [getCard()];
+var cards   = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+var diller  = [getCard()];
 var player1 = [getCard(), getCard()];
 
 alert(getStatus());
 
-if (getSumOfCards(player1) == 21)
+var currentSumm = getSumOfCards(player1);
+if (currentSumm == 21)
+{
 	alert('Выигрыш');
+}
 else
 {
-	do
+	while (currentSumm < 21)
 	{
-		if (prompt('Взять еще одну карту? да/нет') == 'да' && getSumOfCards(player1) < 21)
+		if (prompt('Взять еще одну карту? да/нет') == 'да')
 		{
 			player1.push(getCard());
 			alert(getStatus());
 		}
 		else
 		{
-			alert('Недобор, сумма карт равна ' + getSumOfCards(player1) + '. Игрок отказался взять карту');
+			alert('Недобор, сумма карт равна ' + currentSumm + '. Игрок отказался взять карту');
 			break;
 		}
+		
+		currentSumm = getSumOfCards(player1);
 	}
-	while (getSumOfCards(player1) < 21)
 	
-	if (getSumOfCards(player1) > 21)
+	
+	if (currentSumm > 21)
 	{
-		alert('Перебор: Сумма карт равна ' + getSumOfCards(player1));
+		alert('Перебор: Сумма карт равна ' + currentSumm);
+	}
+	
+	if (currentSumm == 21)
+	{
+		alert('Выигрыш');
 	}
 }
 
 function getCard()
 {
-	var cards = [
-		'6',
-		'7',
-		'8',
-		'9',
-		'10',
-		'J',
-		'Q',
-		'K',
-		'A'];
 	return cards[getRandomInt(0, cards.length - 1)];
 }
 
@@ -47,37 +48,42 @@ function getRandomInt(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 function getStatus()
 {
 	return ('Дилер: ' + diller.join(' ') + '. ' + 'Игрок 1: ' + player1.join(' ') + '.');
 }
+
 function getSumOfCards(arr)
 {
 	var count = 0;
 	for (var i = 0; i < arr.length; i++)
 	{
-		if (arr[i] != 'A')
+		var elem = arr[i];
+		if (elem != 'A')
 		{
-			if (arr[i] == 'J' || arr[i] == 'Q' || arr[i] == 'K')
+			if (elem == 'J' || elem == 'Q' || elem == 'K')
 			{
-				count = count + 10;
+				count += 10;
 			}
 			else
 			{
-				count = count + parseInt(arr[i]);
+				count += parseInt(elem);
 			}
 		}
-	}
-	for (var i = 0; i < arr.length; i++)
-	{
-		if (arr[i] == 'A')
+		else
 		{
 			if (count > 10)
-				count = count + 1;
+			{
+				count++;
+			}
 			else
-				count = count + 11;
+			{
+				count += 11;
+			}
 		}
 	}
+	
 	return count;
 }
 
