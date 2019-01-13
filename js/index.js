@@ -1,15 +1,10 @@
-function getRandomInt(min, max)
-{
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-alert(getRandomInt(0, 100));
-
+var diler = [getCard()];
+var player1 = [getCard(), getCard()];
 
 function getCard()
 {
 	var cards = [
-	    '6',
+		'6',
 		'7',
 		'8',
 		'9',
@@ -18,14 +13,44 @@ function getCard()
 		'Q',
 		'K',
 		'A'];
-	return cards[getRandomInt(0, cards.length - 1)]; x
+	return cards[getRandomInt(0, cards.length - 1)];
 }
 
-var diler = [getCard()];
-var player1 = [getCard(), getCard(), getCard()];
+alert(getStatus());
 
-alert('Дилер: ' + diler.join(' ') + ' Игрок 1: ' + player1.join(' '));
+if (getSumOfCards(player1) == 21)
+	alert('Выигрыш');
+else
+{
+	do
+	{
+		if (prompt('Взять еще одну карту? да/нет') == 'да' && getSumOfCards(player1) < 21)
+		{
+			player1.push(getCard());
+			alert(getStatus());
+		}
+		else
+		{
+			alert('Недобор, сумма карт равна ' + getSumOfCards(player1) + '. Игрок отказался взять карту');
+			break;
+		}
+	}
+	while (getSumOfCards(player1) < 21)
+	
+	if (getSumOfCards(player1) > 21)
+	{
+		alert('Перебор: Сумма карт равна ' + getSumOfCards(player1));
+	}
+}
 
+function getRandomInt(min, max)
+{
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function getStatus()
+{
+	return ('Дилер: ' + diler.join(' ') + '. ' + 'Игрок 1: ' + player1.join(' ') + '.');
+}
 function getSumOfCards(arr)
 {
 	var count = 0;
@@ -55,5 +80,5 @@ function getSumOfCards(arr)
 	}
 	return count;
 }
-alert('Сумма карт равна ' + getSumOfCards(player1));
+
 
