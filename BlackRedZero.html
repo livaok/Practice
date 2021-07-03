@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<script>
+	var countRed = 0;
+	var count = [];
+	var number = 0;
+	var n = prompt('Введите количество элементов').trim();
+	while (isNaN(n) || !n)
+	{
+		n = prompt('Введите количество элементов').trim();
+	}
+	var arr = [];
+	if (parseInt(n) === 1)
+	{
+		if (Math.round(Math.random() * 2 - 1) === 1)
+		{
+			alert('Выпала одна красная фишка');
+		}
+		else
+		{
+			alert('Выпала одна не красная фишка');
+		}
+	}
+	else
+	{
+		for (var i = 0; i < parseInt(n); i++)
+		{
+			arr.push(Math.round(Math.random() * 2 - 1));
+			if (arr[i] === 1)
+			{
+				countRed++;
+			}
+			else
+			{
+				count[number] = countRed;
+				number++;
+				countRed = 0;
+			}
+		}
+		var maxRed = count[0];
+		for (var i = 1; i < count.length; i++)
+		{
+			maxRed = Math.max(maxRed, count[i]);
+		}
+		alert(arr);
+		alert('Максимальное количество подряд идущих красных фишек равно ' + maxRed);
+	}
+</script>
+</body>
+</html>
+
